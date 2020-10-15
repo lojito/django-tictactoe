@@ -1,0 +1,38 @@
+{% extends "game/base.html" %}
+{% load static %}
+{% block content %}
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-7">
+            <h3>You can finish the game now or later.</h3>
+        </div>
+    </div>
+    
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-7">
+            <div class="board">
+            {% for player in game.board %}
+                {% if player == '0' %}
+                <button id="{{ forloop.counter0 }}" class="square" style="background-image: url({% static 'game/default.jpg' %});"></button>
+                {% elif player == '1' %}
+                <button id="{{ forloop.counter0 }}" class="square" style="background-image: url({% static 'game/user.jpg' %});"></button>
+                {% else %}
+                <button id="{{ forloop.counter0 }}" class="square" style="background-image: url({% static 'game/computer.jpg' %});"></button>
+                {% endif %}
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+    
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-2">
+            <button id="delete-game" type="button" class="btn btn-danger" onclick="$(this).hide();$('#question').css('display','flex');">Delete Game</button>  
+        </div>
+        <div class="col-md-5">
+            <h4 id="result"></h4>
+        </div>        
+    </div>
+
+    {% include "game/delete_game.html" %}
+    
+    {% include "game/javascript.html" %}    
+{% endblock %}

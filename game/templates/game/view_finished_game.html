@@ -1,0 +1,30 @@
+{% extends "game/base.html" %}
+{% load static %}
+{% block content %}
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-7">
+            <h3>Game completed on {{ game.finished }}</h3>
+        </div>
+    </div>
+    
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-7">
+            <div class="board">
+            {% for player in game.board %}
+                {% if player == '0' %}
+                <button class="square" style="background-image: url({% static 'game/default.jpg' %});" disabled></button>
+                {% elif player == '1' %}
+                <button class="square" style="background-image: url({% static 'game/user.jpg' %});" disabled></button>
+                {% else %}
+                <button class="square" style="background-image: url({% static 'game/computer.jpg' %});" disabled></button>
+                {% endif %}
+            {% endfor %}
+            </div>
+            <br/>
+            <button id="delete-game" type="button" class="btn btn-danger" onclick="$(this).hide();$('#question').css('display','flex');">Delete Game</button>
+        </div>
+    </div>
+    
+    {% include "game/delete_game.html" %}
+    
+{% endblock %}

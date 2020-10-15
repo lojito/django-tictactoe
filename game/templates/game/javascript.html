@@ -1,0 +1,12 @@
+{% load static %}
+
+<script>
+var config = {
+    userImagePath : "{% static 'game/user.jpg' %}",
+    computerImagePath : "{% static 'game/computer.jpg' %}",
+    gameFinishUrl : "{% url 'finish_game' game.id %}",
+    gamePlayUrl : "{% url 'play_game' game.id %}"
+}
+</script>
+               
+<script src="{% static 'game/bundle.js' %}"></script>

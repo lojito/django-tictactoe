@@ -1,0 +1,16 @@
+.board {
+    font-size: 0;
+}
+
+.board button {
+    width: 24%;
+    border: 1px solid #000;
+    display: inline-block;
+    background-size: 100% 100%;
+}
+
+.board button:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+}

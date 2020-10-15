@@ -1,0 +1,22 @@
+{% extends "game/base.html" %}
+
+{% block content %}
+<br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+<div class="row justify-content-center mt-5">
+    <div class="col-md-7 text-center">
+        <h1>Let's play Tic-Tac-Toe 4x4</h1>
+        <p>Hi! Have you ever played the Tic-Tac-Toe game on a 4x4 board? Well, today is your lucky day! With this version you will have more chances of winning but also of losing too. As with the 3x3 version the goal is to to play your mark on 4 squares forming either a horizontal, vertical or diagonal straight line. You will play against the computer and your mark will be represented by Cristiano Ronaldo. The computer's mark will be represented by Lionel Messi. If you don't know who are them then you are probably living under a rock. Just kidding! Ready for the battle? What are you waiting for? Sign up and start playing! Please, do not use any of your personal password.</p>
+        {% if not user.is_authenticated %}
+        <a role="button" class="btn btn-primary btn-lg" href="{% url 'signup_user' %}">Sign up to play!</a> or <a role="button" class="btn btn-primary btn-lg" href="{% url 'login_user' %}">Login!</a>
+        {% else %}
+        <a role="button" class="btn btn-primary btn-lg" href="{% url 'new_game' %}">New game!</a>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

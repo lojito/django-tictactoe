@@ -1,0 +1,31 @@
+{% extends "game/base.html" %}
+
+{% block content %}
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-10">
+            {% if games %}
+                 <h3>{{ games.count }} Unfinished Game{{ games.count|pluralize }}</h3>
+            {% else %}
+                 <h3>Unfinished Games</h3>
+            {% endif %}
+        </div>
+    </div>
+    
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-10">
+        {% if games %}
+            <div class="list-group">
+                {% for game in games %}
+                    <a href="{% url 'view_game' game.id %}" class="list-group-item list-group-item-action"><b>Game started on:</b> {{ game.created | date:'M j Y H:i'}}</a>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="text-center">
+                <h4>At this moment you have 0 unfinished game!</h4>
+            <br>
+            <a role="button" class="btn btn-primary" href="{% url 'new_game' %}">New Game</a>
+            </div>
+        {% endif %}
+        </div>
+    </div>    
+{% endblock %}
